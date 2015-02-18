@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PANGOrderedSet : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, NSFastEnumeration>
+@interface PANGOrderedSet : NSObject <NSCopying, NSMutableCopying, NSCoding, NSFastEnumeration>
 {
     NSArray *array;
     NSSet *set;
@@ -17,10 +17,10 @@
 - (NSUInteger)count;
 - (id)objectAtIndex:(NSUInteger)idx;
 - (NSUInteger)indexOfObject:(id)object;
-- (id)init NS_DESIGNATED_INITIALIZER;
-- (id)initWithObjects:(const id [])objects count:(NSUInteger)cnt NS_DESIGNATED_INITIALIZER;
-- (id)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
-- (id)initWithArray:(NSArray *)array NS_DESIGNATED_INITIALIZER;
+- (id)init;
+- (id)initWithObjects:(const id [])objects count:(NSUInteger)cnt;
+- (id)initWithCoder:(NSCoder *)aDecoder;
+- (id)initWithArray:(NSArray *)array;
 - (void)getObjects:(id __unsafe_unretained [])objects range:(NSRange)range;
 - (NSArray *)objectsAtIndexes:(NSIndexSet *)indexes;
 - (id) firstObject;

@@ -96,8 +96,10 @@
 {
     self = [super init];
     if (self) {
-        array = [aDecoder decodeObjectOfClass:[NSMutableArray class]
-                                       forKey:@"array"];
+        array = [aDecoder decodeObjectForKey:@"array"];
+        if (![array isKindOfClass:[NSMutableArray class]]) {
+            return nil;
+        }
         set = [NSMutableSet setWithArray:array];
     }
     return self;

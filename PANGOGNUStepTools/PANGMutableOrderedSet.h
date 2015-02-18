@@ -11,11 +11,11 @@
 
 @interface PANGMutableOrderedSet : PANGOrderedSet
 
-- (id) init NS_DESIGNATED_INITIALIZER;
-- (id) initWithObjects:(const id [])objects count:(NSUInteger)cnt NS_DESIGNATED_INITIALIZER;
-- (id) initWithArray:(NSArray *)array NS_DESIGNATED_INITIALIZER;
-- (id) initWithCapacity:(NSUInteger)numItems NS_DESIGNATED_INITIALIZER;
-- (id) initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
+- (id) init;
+- (id) initWithObjects:(const id [])objects count:(NSUInteger)cnt;
+- (id) initWithArray:(NSArray *)array;
+- (id) initWithCapacity:(NSUInteger)numItems;
+- (id) initWithCoder:(NSCoder *)aDecoder;
 
 - (void)insertObject:(id)object atIndex:(NSUInteger)idx;
 - (void)removeObjectAtIndex:(NSUInteger)idx;

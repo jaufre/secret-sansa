@@ -120,6 +120,7 @@
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:orderedSet];
     PANGMutableOrderedSet *otherOrderedSet = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     XCTAssertEqualObjects(orderedSet, otherOrderedSet);
+    NSLog(@"");
 }
 
 -(void)testInsertObjectAtIndex

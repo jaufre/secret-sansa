@@ -87,20 +87,17 @@
 {
     self = [super init];
     if (self) {
-        array = [aDecoder decodeObjectOfClass:[NSArray class]
-                                       forKey:@"array"];
+        array = [aDecoder decodeObjectForKey:@"array"];
+        if (![array isKindOfClass:[NSArray class]]) {
+            return nil;
+        }
         set = [NSSet setWithArray:array];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:[self array] forKey:@"array"];
-}
-
-+ (BOOL)supportsSecureCoding
-{
-    return YES;
+    [coder encodeObject:array forKey:@"array"];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -136,7 +133,10 @@
 
 - (id) firstObject
 {
-    return [array firstObject];
+    if ([self count] != 0) {
+        return [array objectAtIndex:0];
+    }
+    return nil;
 }
 
 - (id) lastObject
