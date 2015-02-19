@@ -2,7 +2,9 @@
 Complement for GNUStep
 
 This repository propose dirty implementation of missed class for GNUStep.
-For the moment : NSOrderedSet and NSMutableOrderedSet.h
+For the moment : NSOrderedSet.h and NSMutableOrderedSet.h
+
+Warning : this dirty implementation is not thread safe.
 
 In xcode-project, there are the booth class and unit- test. The NS Prefix is replaced by PANG.
 
