@@ -383,7 +383,6 @@
     XCTAssertEqualObjects(array, otherArray);
     NSArray *array2 = [orderedSet array];;
     XCTAssertEqualObjects(array, array2);
-    XCTAssertNotEqual(array, array2);
 }
 
 -(void)testSet
@@ -399,7 +398,6 @@
     XCTAssertEqualObjects(set, otherSet);
     NSSet *set2 = [orderedSet set];;
     XCTAssertEqualObjects(set, set2);
-    XCTAssertNotEqual(set, set2);
 }
 
 -(void)testCopy

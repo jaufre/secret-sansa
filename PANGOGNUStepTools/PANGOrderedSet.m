@@ -216,12 +216,12 @@
 
 - (NSArray *) array
 {
-    return [NSArray arrayWithArray:array];
+    return (NSArray *) array;
 }
 
 - (NSSet *) set
 {
-    return [NSSet setWithSet:set];
+    return (NSSet *) set;
 }
 
 - (void)enumerateObjectsUsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block

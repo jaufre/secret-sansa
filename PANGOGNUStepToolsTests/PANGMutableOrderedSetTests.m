@@ -120,7 +120,6 @@
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:orderedSet];
     PANGMutableOrderedSet *otherOrderedSet = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     XCTAssertEqualObjects(orderedSet, otherOrderedSet);
-    NSLog(@"");
 }
 
 -(void)testInsertObjectAtIndex
@@ -992,6 +991,42 @@
                       @"Bleu",
                       @"Noir",
                       @"Orange",
+                      nil];
+    XCTAssertEqualObjects(tempArray, [orderedSet array]);
+    XCTAssertEqualObjects(tempSet, [orderedSet set]);
+}
+
+-(void)testMultiThread
+{
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [queue addOperationWithBlock:^{
+        [orderedSet sortWithOptions:0
+                    usingComparator:^(id obj1, id obj2) {
+                        NSString *string1 = (NSString *)obj1;
+                        NSString *string2 = (NSString *)obj2;
+                        return [string1 compare:string2];
+                        }];
+    }];
+    [queue addOperationWithBlock:^{
+        NSSet *otherSet = [[NSSet alloc] initWithObjects:
+                           @"Vert",
+                           @"Marron",
+                           @"Bleu",
+                           @"Ivoire",
+                           nil];
+        [orderedSet minusSet:otherSet];
+    }];
+    [queue addOperationWithBlock:^{
+        [orderedSet removeObject:@"Orange"];
+    }];
+    [queue waitUntilAllOperationsAreFinished];
+    NSArray *tempArray = [NSArray arrayWithObjects:
+                          @"Noir",
+                          @"Rouge",
+                          nil];
+    NSSet *tempSet = [NSSet setWithObjects:
+                      @"Noir",
+                      @"Rouge",
                       nil];
     XCTAssertEqualObjects(tempArray, [orderedSet array]);
     XCTAssertEqualObjects(tempSet, [orderedSet set]);

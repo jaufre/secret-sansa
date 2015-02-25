@@ -10,6 +10,9 @@
 #import "PANGOrderedSet.h"
 
 @interface PANGMutableOrderedSet : PANGOrderedSet
+{
+    NSRecursiveLock *lock;
+}
 
 - (id) init;
 - (id) initWithObjects:(const id [])objects count:(NSUInteger)cnt;

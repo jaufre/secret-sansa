@@ -30,6 +30,7 @@
 {
     self = [super init];
     if (self) {
+        lock = [[NSRecursiveLock alloc] init];
         array = [NSMutableArray array];
         set = [NSMutableSet set];
     }
@@ -40,6 +41,7 @@
 {
     self = [super init];
     if (self) {
+        lock = [[NSRecursiveLock alloc] init];
         NSArray *tempArray = [[NSArray alloc] initWithObjects:objects count:cnt];
         NSMutableSet *mSet = [NSMutableSet set];
         NSMutableArray *mArray = [NSMutableArray array];
@@ -64,6 +66,7 @@
 {
     self = [super init];
     if (self) {
+        lock = [[NSRecursiveLock alloc] init];
         NSMutableSet *mSet = [NSMutableSet set];
         NSMutableArray *mArray = [NSMutableArray array];
         for (int i = 0; i < [nArray count]; i++) {
@@ -87,6 +90,7 @@
 {
     self = [super init];
     if (self) {
+        lock = [[NSRecursiveLock alloc] init];
         array = [[NSMutableArray alloc] initWithCapacity:numItems];
         set = [[NSMutableSet alloc] initWithCapacity:numItems];
     }
@@ -96,6 +100,7 @@
 {
     self = [super init];
     if (self) {
+        lock = [[NSRecursiveLock alloc] init];
         array = [aDecoder decodeObjectForKey:@"array"];
         if (![array isKindOfClass:[NSMutableArray class]]) {
             return nil;
@@ -111,19 +116,24 @@
         [NSException raise: NSInvalidArgumentException
                     format: @"Tried to add nil to set"];
     }
+    [lock lockBeforeDate:[NSDate distantFuture]];
     if (![self containsObject:object]) {
         [[self mutableArray] insertObject:object
                                   atIndex:idx];
         [[self mutableSet] addObject:object];
-    }}
+    }
+    [lock unlock];
+}
 
 - (void)removeObjectAtIndex:(NSUInteger)idx
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     id obj = [array objectAtIndex:idx];
     if (obj) {
         [[self mutableArray] removeObjectAtIndex:idx];
         [[self mutableSet] removeObject:obj];
     }
+    [lock unlock];
 }
 
 - (void)replaceObjectAtIndex:(NSUInteger)idx withObject:(id)object
@@ -132,6 +142,7 @@
         [NSException raise: NSInvalidArgumentException
                     format: @"Tried to add nil to set"];
     }
+    [lock lockBeforeDate:[NSDate distantFuture]];
     if (![self containsObject:object]) {
         id obj = [array objectAtIndex:idx];
         if (obj) {
@@ -140,6 +151,7 @@
             [[self mutableSet] addObject:object];
         }
     }
+    [lock unlock];
 }
 
 - (void)addObject:(id)object
@@ -148,10 +160,12 @@
         [NSException raise: NSInvalidArgumentException
                     format: @"Tried to add nil to set"];
     }
+    [lock lockBeforeDate:[NSDate distantFuture]];
     if (![self containsObject:object]) {
         [[self mutableArray] addObject:object];
         [[self mutableSet] addObject:object];
     }
+    [lock unlock];
 }
 
 - (void)addObjects:(const id [])objects count:(NSUInteger)count
@@ -162,20 +176,25 @@
 
 - (void)addObjectsFromArray:(NSArray *)nArray
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     for (int i = 0; i < [nArray count]; i++) {
         id obj = [nArray objectAtIndex:i];
         [self addObject:obj];
     }
+    [lock unlock];
 }
 
 - (void)exchangeObjectAtIndex:(NSUInteger)idx1 withObjectAtIndex:(NSUInteger)idx2
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     [[self mutableArray] exchangeObjectAtIndex:idx1
                              withObjectAtIndex:idx2];
+    [lock unlock];
 }
 
 - (void)moveObjectsAtIndexes:(NSIndexSet *)indexes toIndex:(NSUInteger)idx
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     NSArray *tempArray = [array objectsAtIndexes:indexes];
     for (id obj in tempArray){
         [[self mutableArray] removeObject:obj];
@@ -184,12 +203,14 @@
         [[self mutableArray] insertObject:[tempArray objectAtIndex:i]
                                   atIndex:idx + i];
     }
+    [lock unlock];
 }
 
 - (void)insertObjects:(NSArray *)objects atIndexes:(NSIndexSet *)indexes
 {
     int i = 0;
     int idx = (int)[indexes firstIndex];
+    [lock lockBeforeDate:[NSDate distantFuture]];
     while (i < [objects count]) {
         id obj = [objects objectAtIndex:i];
         if (!obj) {
@@ -200,6 +221,7 @@
         i++;
         idx = (int)[indexes indexGreaterThanIndex:idx];
     }
+    [lock unlock];
 }
 
 - (void)setObject:(id)obj atIndex:(NSUInteger)idx
@@ -208,12 +230,14 @@
         [NSException raise: NSInvalidArgumentException
                     format: @"Tried to add nil to set"];
     }
+    [lock lockBeforeDate:[NSDate distantFuture]];
     if (idx < [self count]) {
         [self replaceObjectAtIndex:idx withObject:obj];
     }
     else if (idx  == [self count]) {
         [self addObject:obj];
     }
+    [lock unlock];
 }
 
 - (void)setObject:(id)obj atIndexedSubscript:(NSUInteger)idx
@@ -227,6 +251,7 @@
 {
     NSArray *tempArray = [NSArray arrayWithObjects:objects
                                              count:count];
+    [lock lockBeforeDate:[NSDate distantFuture]];
     NSUInteger min = count;
     if (min > range.length) {
         min = range.length;
@@ -238,6 +263,7 @@
                     atIndex:range.location + i];
         }
     }
+    [lock unlock];
 }
 
 - (void)replaceObjectsAtIndexes:(NSIndexSet *)indexes
@@ -252,6 +278,7 @@
     }
     NSUInteger i = 0;
     NSUInteger idx = [indexes firstIndex];
+    [lock lockBeforeDate:[NSDate distantFuture]];
     while (i < [objects count]) {
         id obj = [objects objectAtIndex:i];
         if (obj) {
@@ -261,11 +288,13 @@
         i++;
         idx = [indexes indexGreaterThanIndex:idx];
     }
+    [lock unlock];
 }
 
 - (void)removeObjectsInRange:(NSRange)range
 {
     NSMutableArray *tempArray = [NSMutableArray array];
+    [lock lockBeforeDate:[NSDate distantFuture]];
     for (NSUInteger i = range.location; i < range.location + range.length; i++) {
         id obj = [self objectAtIndex:i];
         if (obj) {
@@ -273,107 +302,133 @@
         }
     }
     [self removeObjectsInArray:tempArray];
+    [lock unlock];
 }
 
 - (void)removeObjectsAtIndexes:(NSIndexSet *)indexes
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     NSArray *tempArray = [self objectsAtIndexes:indexes];
     [self removeObjectsInArray:tempArray];
+    [lock unlock];
 }
 
 - (void)removeAllObjects
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     [[self mutableArray] removeAllObjects];
     [[self mutableSet] removeAllObjects];
+    [lock unlock];
 }
 
 - (void)removeObject:(id)object
 {
     if (object) {
+        [lock lockBeforeDate:[NSDate distantFuture]];
         [[self mutableSet] removeObject:object];
         [[self mutableArray] removeObject:object];
+        [lock unlock];
     }
 }
 - (void)removeObjectsInArray:(NSArray *)tempArray
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     for (id obj in  tempArray) {
         if (obj) {
             [self removeObject:obj];
         }
     }
+    [lock unlock];
 }
 
 - (void)intersectOrderedSet:(PANGOrderedSet *)other
 {
     NSMutableArray *tempArray = [NSMutableArray array];
+    [lock lockBeforeDate:[NSDate distantFuture]];
     for (id obj in self) {
         if (![other containsObject:obj]) {
             [tempArray addObject:obj];
         }
     }
     [self removeObjectsInArray:tempArray];
+    [lock unlock];
 }
 
 - (void)minusOrderedSet:(PANGOrderedSet *)other
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     for (id obj in other) {
         if ([self containsObject:obj]) {
             [self removeObject:obj];
         }
     }
+    [lock unlock];
 }
 
 - (void)unionOrderedSet:(PANGOrderedSet *)other
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     for (id obj in other) {
         if (![self containsObject:obj]) {
             [self addObject:obj];
         }
     }
+    [lock unlock];
 }
 
 - (void)intersectSet:(NSSet *)other
 {
     NSMutableArray *tempArray = [NSMutableArray array];
+    [lock lockBeforeDate:[NSDate distantFuture]];
     for (id obj in self) {
         if (![other containsObject:obj]) {
             [tempArray addObject:obj];
         }
     }
     [self removeObjectsInArray:tempArray];
+    [lock unlock];
 }
 
 - (void)minusSet:(NSSet *)other;
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     for (id obj in other) {
         [self removeObject:obj];
     }
+    [lock unlock];
 }
 
 - (void)unionSet:(NSSet *)other
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     for (id obj in other) {
         if (![self containsObject:obj]) {
             [self addObject:obj];
         }
     }
+    [lock unlock];
 }
 
 - (void)sortUsingComparator:(NSComparator)cmptr
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     [[self mutableArray] sortUsingComparator:cmptr];
+    [lock unlock];
 }
 
 - (void)sortWithOptions:(NSSortOptions)opts usingComparator:(NSComparator)cmptr
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     [[self mutableArray] sortWithOptions:opts
                          usingComparator:cmptr];
+    [lock unlock];
 }
 
 - (void)sortRange:(NSRange)range
           options:(NSSortOptions)opts
   usingComparator:(NSComparator)cmptr
 {
+    [lock lockBeforeDate:[NSDate distantFuture]];
     NSArray *tempArray = [array subarrayWithRange:range];
     NSArray *tempArraySorted = [tempArray sortedArrayUsingComparator:cmptr];
     for (int i = 0; i < [tempArraySorted count]; i++) {
@@ -383,6 +438,7 @@
                                            withObject:obj];
         }
     }
+    [lock unlock];
 }
 
 + (id)orderedSetWithCapacity:(NSUInteger)numItems
