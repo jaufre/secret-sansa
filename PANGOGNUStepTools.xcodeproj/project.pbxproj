@@ -17,6 +17,8 @@
 		C268C74F1A940E13002E0273 /* PANGMutableOrderedSetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C74D1A940E13002E0273 /* PANGMutableOrderedSetTests.m */; };
 		C268C7501A940E13002E0273 /* PANGOrderedSetForGnuStepTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C74E1A940E13002E0273 /* PANGOrderedSetForGnuStepTests.m */; };
 		C268C7521A94105A002E0273 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C268C7511A94105A002E0273 /* LICENSE */; };
+		C268C7541A9D55A1002E0273 /* GNUmakefile in Resources */ = {isa = PBXBuildFile; fileRef = C268C7531A9D55A1002E0273 /* GNUmakefile */; };
+		C268C7561A9D55BA002E0273 /* GNUmakefile.preamble in Resources */ = {isa = PBXBuildFile; fileRef = C268C7551A9D55BA002E0273 /* GNUmakefile.preamble */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		C268C74D1A940E13002E0273 /* PANGMutableOrderedSetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PANGMutableOrderedSetTests.m; sourceTree = "<group>"; };
 		C268C74E1A940E13002E0273 /* PANGOrderedSetForGnuStepTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PANGOrderedSetForGnuStepTests.m; sourceTree = "<group>"; };
 		C268C7511A94105A002E0273 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		C268C7531A9D55A1002E0273 /* GNUmakefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GNUmakefile; path = "GNUStep Version/GNUmakefile"; sourceTree = "<group>"; };
+		C268C7551A9D55BA002E0273 /* GNUmakefile.preamble */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GNUmakefile.preamble; path = "GNUStep Version/GNUmakefile.preamble"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 			isa = PBXGroup;
 			children = (
 				C268C7511A94105A002E0273 /* LICENSE */,
+				C268C7531A9D55A1002E0273 /* GNUmakefile */,
+				C268C7551A9D55BA002E0273 /* GNUmakefile.preamble */,
 				C268C72B1A940D63002E0273 /* PANGOGNUStepTools */,
 				C268C7381A940D63002E0273 /* PANGOGNUStepToolsTests */,
 				C268C72A1A940D63002E0273 /* Products */,
@@ -216,6 +222,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C268C7521A94105A002E0273 /* LICENSE in Resources */,
+				C268C7561A9D55BA002E0273 /* GNUmakefile.preamble in Resources */,
+				C268C7541A9D55A1002E0273 /* GNUmakefile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
