@@ -2,14 +2,34 @@
 Complement for GNUStep
 
 This repository propose dirty implementation of missed class for GNUStep.
-For the moment : NSOrderedSet.h and NSMutableOrderedSet.h
+For the moment : NSOrderedSet, NSMutableOrderedSet, NSBlockOperation, and a categorie for NSOperationQueue (NSOperationQueue+BlockOperation).
 
 Warning : this dirty implementation of NSMutableOrderedSet is not realy thread safe.
 
-In xcode-project, there are the booth class and unit- test. The NS Prefix is replaced by PANG.
+In xcode-project, there are the four class and unit- test. The NS Prefix is replaced by PANG.
 
-In GNUStep Version folder, there is a version with normal prefix, GNUMakeFile and GNUmakefile.preamble.
-GNUmakefile.preamble should be adapted to the setup environment. GNUMakeFile build and install a library orderedSet in 
-GNUStep library with two headers :
+There is two folder for GNUstep version : GNUstep libblockoperation and GNUstep liborderedset.
+In this folder, GNUmakefile.preamble should be adapted to the setup environment. 
+Compile liborderedset and libblockoperation need clang and objective c runtime compiled with clang, block support, arc, ...
 
-orderedSet/NSOrderedSet.h  and orderedSet/NSMutableOrderedSet.h
+To compile liborderedset:
+
+    ...  
+    $make  
+    $sudo make install  
+    $sudo ldconfig  
+  
+Usage :  
+<code>
+    #import '<orderedSet/NSOrderedSet.h>'  
+    #import <orderedSet/NSMutableOrderedSet.h>  
+</code>
+To compile libblockoperation:   
+    ...  
+    $make  
+    $sudo make install  
+    $sudo ldconfig
+  
+Usage : 
+    #import <blockOperation/NSBlockOperation.h>
+    #import <blockOperation/NSOperationQueue+BlockOperation>
