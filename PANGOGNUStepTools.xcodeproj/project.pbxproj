@@ -17,8 +17,11 @@
 		C268C74F1A940E13002E0273 /* PANGMutableOrderedSetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C74D1A940E13002E0273 /* PANGMutableOrderedSetTests.m */; };
 		C268C7501A940E13002E0273 /* PANGOrderedSetForGnuStepTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C74E1A940E13002E0273 /* PANGOrderedSetForGnuStepTests.m */; };
 		C268C7521A94105A002E0273 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C268C7511A94105A002E0273 /* LICENSE */; };
-		C268C7541A9D55A1002E0273 /* GNUmakefile in Resources */ = {isa = PBXBuildFile; fileRef = C268C7531A9D55A1002E0273 /* GNUmakefile */; };
-		C268C7561A9D55BA002E0273 /* GNUmakefile.preamble in Resources */ = {isa = PBXBuildFile; fileRef = C268C7551A9D55BA002E0273 /* GNUmakefile.preamble */; };
+		C2D9A1CD1AA523FB00F059DB /* PANGBlockOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2D9A1CB1AA523FB00F059DB /* PANGBlockOperation.h */; };
+		C2D9A1CE1AA523FB00F059DB /* PANGBlockOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D9A1CC1AA523FB00F059DB /* PANGBlockOperation.m */; };
+		C2DFA7E61AA5AF86006A3F30 /* PANGBlockOperationForGnuStepTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DFA7E51AA5AF86006A3F30 /* PANGBlockOperationForGnuStepTests.m */; };
+		C2DFA7E91AA5C380006A3F30 /* NSOperationQueue+BlockOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2DFA7E71AA5C380006A3F30 /* NSOperationQueue+BlockOperation.h */; };
+		C2DFA7EA1AA5C380006A3F30 /* NSOperationQueue+BlockOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DFA7E81AA5C380006A3F30 /* NSOperationQueue+BlockOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +48,11 @@
 		C268C74D1A940E13002E0273 /* PANGMutableOrderedSetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PANGMutableOrderedSetTests.m; sourceTree = "<group>"; };
 		C268C74E1A940E13002E0273 /* PANGOrderedSetForGnuStepTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PANGOrderedSetForGnuStepTests.m; sourceTree = "<group>"; };
 		C268C7511A94105A002E0273 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		C268C7531A9D55A1002E0273 /* GNUmakefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GNUmakefile; path = "GNUStep Version/GNUmakefile"; sourceTree = "<group>"; };
-		C268C7551A9D55BA002E0273 /* GNUmakefile.preamble */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GNUmakefile.preamble; path = "GNUStep Version/GNUmakefile.preamble"; sourceTree = "<group>"; };
+		C2D9A1CB1AA523FB00F059DB /* PANGBlockOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PANGBlockOperation.h; sourceTree = "<group>"; };
+		C2D9A1CC1AA523FB00F059DB /* PANGBlockOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PANGBlockOperation.m; sourceTree = "<group>"; };
+		C2DFA7E51AA5AF86006A3F30 /* PANGBlockOperationForGnuStepTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PANGBlockOperationForGnuStepTests.m; sourceTree = "<group>"; };
+		C2DFA7E71AA5C380006A3F30 /* NSOperationQueue+BlockOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+BlockOperation.h"; sourceTree = "<group>"; };
+		C2DFA7E81AA5C380006A3F30 /* NSOperationQueue+BlockOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperationQueue+BlockOperation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				C268C7511A94105A002E0273 /* LICENSE */,
-				C268C7531A9D55A1002E0273 /* GNUmakefile */,
-				C268C7551A9D55BA002E0273 /* GNUmakefile.preamble */,
 				C268C72B1A940D63002E0273 /* PANGOGNUStepTools */,
 				C268C7381A940D63002E0273 /* PANGOGNUStepToolsTests */,
 				C268C72A1A940D63002E0273 /* Products */,
@@ -97,6 +101,10 @@
 				C268C7481A940DDE002E0273 /* PANGOrderedSet.m */,
 				C268C7451A940DDE002E0273 /* PANGMutableOrderedSet.h */,
 				C268C7461A940DDE002E0273 /* PANGMutableOrderedSet.m */,
+				C2D9A1CB1AA523FB00F059DB /* PANGBlockOperation.h */,
+				C2D9A1CC1AA523FB00F059DB /* PANGBlockOperation.m */,
+				C2DFA7E71AA5C380006A3F30 /* NSOperationQueue+BlockOperation.h */,
+				C2DFA7E81AA5C380006A3F30 /* NSOperationQueue+BlockOperation.m */,
 				C268C72C1A940D63002E0273 /* Supporting Files */,
 			);
 			path = PANGOGNUStepTools;
@@ -116,6 +124,7 @@
 				C268C73B1A940D63002E0273 /* PANGOGNUStepToolsTests.m */,
 				C268C74E1A940E13002E0273 /* PANGOrderedSetForGnuStepTests.m */,
 				C268C74D1A940E13002E0273 /* PANGMutableOrderedSetTests.m */,
+				C2DFA7E51AA5AF86006A3F30 /* PANGBlockOperationForGnuStepTests.m */,
 				C268C7391A940D63002E0273 /* Supporting Files */,
 			);
 			path = PANGOGNUStepToolsTests;
@@ -136,9 +145,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2D9A1CD1AA523FB00F059DB /* PANGBlockOperation.h in Headers */,
 				C268C7491A940DDE002E0273 /* PANGMutableOrderedSet.h in Headers */,
 				C268C72F1A940D63002E0273 /* PANGOGNUStepTools.h in Headers */,
 				C268C74B1A940DDE002E0273 /* PANGOrderedSet.h in Headers */,
+				C2DFA7E91AA5C380006A3F30 /* NSOperationQueue+BlockOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,8 +233,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C268C7521A94105A002E0273 /* LICENSE in Resources */,
-				C268C7561A9D55BA002E0273 /* GNUmakefile.preamble in Resources */,
-				C268C7541A9D55A1002E0273 /* GNUmakefile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +250,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2D9A1CE1AA523FB00F059DB /* PANGBlockOperation.m in Sources */,
 				C268C74C1A940DDE002E0273 /* PANGOrderedSet.m in Sources */,
+				C2DFA7EA1AA5C380006A3F30 /* NSOperationQueue+BlockOperation.m in Sources */,
 				C268C74A1A940DDE002E0273 /* PANGMutableOrderedSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2DFA7E61AA5AF86006A3F30 /* PANGBlockOperationForGnuStepTests.m in Sources */,
 				C268C7501A940E13002E0273 /* PANGOrderedSetForGnuStepTests.m in Sources */,
 				C268C73C1A940D63002E0273 /* PANGOGNUStepToolsTests.m in Sources */,
 				C268C74F1A940E13002E0273 /* PANGMutableOrderedSetTests.m in Sources */,

@@ -2,4 +2,4 @@ ADDITIONAL_OBJC_LIBS = -lgnustep-base -ldispatch
 ADDITIONAL_GUI_LIBS = -lgnustep-gui
 ADDITIONAL_OBJCFLAGS += -fconstant-string-class=NSConstantString
 ADDITIONAL_OBJCFLAGS += -DGNUSTEP
-ADDITIONAL_OBJCFLAGS += -fblocks
+ADDITIONAL_OBJCFLAGS += -fblocks -fobjc-arc

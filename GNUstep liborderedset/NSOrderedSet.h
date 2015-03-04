@@ -1,4 +1,4 @@
-﻿//
+//
 //  NSOrderedSet.h
 //  NSOrderedSetForGnuStep
 //
