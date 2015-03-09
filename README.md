@@ -14,22 +14,22 @@ Compile liborderedset and libblockoperation need clang and objective c runtime c
 
 To compile liborderedset:
 
-    ...  
     $make  
     $sudo make install  
     $sudo ldconfig  
   
 Usage :  
-<code>
+
     #import '<orderedSet/NSOrderedSet.h>'  
     #import <orderedSet/NSMutableOrderedSet.h>  
-</code>
-To compile libblockoperation:   
-    ...  
+    
+To compile libblockoperation:  
+
     $make  
     $sudo make install  
     $sudo ldconfig
   
-Usage : 
+Usage :    
+
     #import <blockOperation/NSBlockOperation.h>
     #import <blockOperation/NSOperationQueue+BlockOperation>
