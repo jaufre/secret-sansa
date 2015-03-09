@@ -8,12 +8,14 @@ Warning : this dirty implementation of NSMutableOrderedSet is not realy thread s
 
 In xcode-project, there are the four class and unit- test. The NS Prefix is replaced by PANG.
 
-There is two folder for GNUstep version : GNUstep libblockoperation and GNUstep liborderedset.
+There is two folder for GNUstep version : GNUstep_libblockoperation and GNUstep_liborderedset.
 In this folder, GNUmakefile.preamble should be adapted to the setup environment. 
 Compile liborderedset and libblockoperation need clang and objective c runtime compiled with clang, block support, arc, ...
 
 To compile liborderedset:
 
+    $wget https://github.com/jaufre/secret-sansa/GNUstep_liborderedset
+    $cd GNUstep_liborderedset
     $make  
     $sudo make install  
     $sudo ldconfig  
@@ -25,6 +27,8 @@ Usage :
     
 To compile libblockoperation:  
 
+    $wget https://github.com/jaufre/secret-sansa/GNUstep_libblockoperation
+    $cd GNUstep_libblockoperation
     $make  
     $sudo make install  
     $sudo ldconfig
