@@ -14,8 +14,9 @@ Compile liborderedset and libblockoperation need clang and objective c runtime c
 
 To compile liborderedset:
 
-    $wget https://github.com/jaufre/secret-sansa/GNUstep_liborderedset
-    $cd GNUstep_liborderedset
+    $cd ~
+    $git clone https://github.com/jaufre/secret-sansa
+    $cd ~/secret-sansa/GNUstep_liborderedset
     $make  
     $sudo make install  
     $sudo ldconfig  
@@ -27,8 +28,7 @@ Usage :
     
 To compile libblockoperation:  
 
-    $wget https://github.com/jaufre/secret-sansa/GNUstep_libblockoperation
-    $cd GNUstep_libblockoperation
+    $cd ~/secret-sansa/GNUstep_libblockoperation
     $make  
     $sudo make install  
     $sudo ldconfig
