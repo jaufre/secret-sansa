@@ -23,7 +23,7 @@ To compile liborderedset:
   
 Usage :  
 
-    #import '<orderedSet/NSOrderedSet.h>'  
+    #import <orderedSet/NSOrderedSet.h>  
     #import <orderedSet/NSMutableOrderedSet.h>  
     
 To compile libblockoperation:  
